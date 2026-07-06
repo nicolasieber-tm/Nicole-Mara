@@ -248,6 +248,23 @@ section{padding:88px 0}
 .faq-list details[open] summary .plus{transform:rotate(45deg)}
 .faq-list .ans{padding:0 22px 20px;color:var(--ink-soft);font-size:.98rem}
 .faq-list .ans a{color:var(--gold-deep-solid);font-weight:600}
+
+/* ---------- termin booking (Trending Media) ---------- */
+.tm-booking{background:var(--gold);color:#fff;text-align:center;position:relative;overflow:hidden;padding:88px 26px}
+.tm-booking:before{content:"❤";position:absolute;font-size:22rem;opacity:.07;right:-3rem;top:-4rem;font-family:serif;pointer-events:none}
+.tm-booking>*{position:relative;z-index:2}
+.tm-booking h2{font-size:clamp(2rem,4.4vw,3rem);margin-bottom:.25em;color:#fff}
+.tm-booking>p{max-width:560px;margin:0 auto 1.7em;font-weight:300;font-size:1.1rem;color:rgba(255,255,255,.95)}
+#tm-slots{max-width:780px;margin:0 auto 1.4em;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;color:rgba(255,255,255,.95);font-weight:300}
+#tm-slots button{border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:.72em 1.25em;cursor:pointer;font:inherit;font-size:.92rem;transition:transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease}
+#tm-slots button:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-2px)}
+#tm-form{max-width:440px;margin:1.4em auto 0;display:grid;gap:12px;text-align:left}
+#tm-form input,#tm-form textarea{width:100%;border:1.5px solid rgba(255,255,255,.45);border-radius:10px;padding:.75em .9em;font:inherit;background:rgba(255,255,255,.96);color:var(--ink)}
+#tm-form input::placeholder,#tm-form textarea::placeholder{color:var(--ink-soft)}
+#tm-form input:focus,#tm-form textarea:focus{outline:none;border-color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.4)}
+#tm-form textarea{min-height:80px;resize:vertical}
+#tm-form button[type=submit]{justify-self:center;margin-top:.3em}
+#tm-status{max-width:560px;margin:1.1em auto 0;font-size:.95rem;color:#fff;min-height:1.2em}
 </style>
 </head>
 <body>
@@ -266,7 +283,7 @@ section{padding:88px 0}
       <a href="#seelenschmuck" onclick="closeNav()">Seelenschmuck</a>
       <a href="#faq" onclick="closeNav()">FAQ</a>
       <a href="#kontakt" onclick="closeNav()">Kontakt</a>
-      <a href="#" class="btn nav-cta" onclick="openBooking();closeNav();return false;">Termin buchen</a>
+      <a href="#" class="btn nav-cta" data-sketch-cta onclick="openBooking();closeNav();return false;">Termin buchen</a>
     </nav>
     <button class="burger" onclick="toggleNav()" aria-label="Menü">☰</button>
   </div>
@@ -279,7 +296,7 @@ section{padding:88px 0}
     <h1>Auf dem Weg zu einer Welt mit<br>gesunden &amp; zufriedenen Menschen.</h1>
     <p class="lead">Traumasensible, ganzheitliche Begleitung für Menschen in jedem Alter – in Teufen im Appenzellerland. Dich ausprobieren, bei dir ankommen, dir selbst begegnen.</p>
     <div class="hero-cta">
-      <a href="#" class="btn btn-dark" onclick="openBooking();return false;">Termin buchen</a>
+      <a href="#" class="btn btn-dark" data-sketch-cta onclick="openBooking();return false;">Termin buchen</a>
       <a href="#angebot" class="btn btn-ghost" style="border-color:rgba(255,255,255,.35)">Angebot entdecken</a>
     </div>
     <div class="trust">
@@ -318,7 +335,7 @@ section{padding:88px 0}
             <li>mehr Leichtigkeit, Selbstvertrauen &amp; Verbindung</li>
           </ul>
           <div class="card-cta">
-            <a href="#" class="btn" onclick="openBooking('Ganzheitliche Begleitung & Coaching');return false;">Termin buchen</a>
+            <a href="#" class="btn" data-sketch-cta onclick="openBooking('Ganzheitliche Begleitung & Coaching');return false;">Termin buchen</a>
             <span class="free">Erstgespräch kostenlos</span>
           </div>
         </div>
@@ -340,7 +357,7 @@ section{padding:88px 0}
             <li>mehr Sein und Lebensqualität</li>
           </ul>
           <div class="card-cta">
-            <a href="#" class="btn" onclick="openBooking('Workshop & Meditation');return false;">Platz anfragen</a>
+            <a href="#" class="btn" data-sketch-cta onclick="openBooking('Workshop & Meditation');return false;">Platz anfragen</a>
             <span class="free">Gruppen &amp; einzeln</span>
           </div>
         </div>
@@ -362,7 +379,7 @@ section{padding:88px 0}
             <li>spürbare Entlastung für Angehörige</li>
           </ul>
           <div class="card-cta">
-            <a href="#" class="btn" onclick="openBooking('Private Betreuung zu Hause');return false;">Termin buchen</a>
+            <a href="#" class="btn" data-sketch-cta onclick="openBooking('Private Betreuung zu Hause');return false;">Termin buchen</a>
             <span class="free">Kennenlernen kostenlos</span>
           </div>
         </div>
@@ -384,7 +401,7 @@ section{padding:88px 0}
             <li>Momente der Verbundenheit</li>
           </ul>
           <div class="card-cta">
-            <a href="#" class="btn" onclick="openBooking('Sterbebegleitung');return false;">Termin buchen</a>
+            <a href="#" class="btn" data-sketch-cta onclick="openBooking('Sterbebegleitung');return false;">Termin buchen</a>
             <span class="free">nach Zeitaufwand</span>
           </div>
         </div>
@@ -518,15 +535,59 @@ section{padding:88px 0}
   </div>
 </section>
 
-<!-- ================= BIG CTA ================= -->
-<section class="cta-band" id="termin">
-  <div class="wrap">
-    <div class="eyebrow" style="color:rgba(255,255,255,.9)">Dein nächster Schritt</div>
-    <h2>Ja, ich traue mich.</h2>
-    <p>Wenn du spürst, dass jetzt der richtige Moment ist, begleite ich dich gern ein Stück deines Weges. Der erste Kontakt für Fragen oder Terminbuchungen ist kostenlos.</p>
-    <a href="#" class="btn btn-dark" onclick="openBooking();return false;" style="font-size:1.05rem;padding:1em 2.2em">Termin buchen</a>
-  </div>
+<!-- ================= BIG CTA / TERMIN ================= -->
+<!-- Termin-CTA: Trending Media Buchung (sketch-Flow) -->
+<section id="termin" class="tm-booking">
+  <div class="eyebrow" style="color:rgba(255,255,255,.9)">Dein nächster Schritt</div>
+  <h2>Ja, ich traue mich.</h2>
+  <p>Such dir einen freien Moment aus – 15 Minuten, ganz unverbindlich und online. Ich melde mich persönlich bei dir.</p>
+  <div id="tm-slots">Freie Termine werden geladen …</div>
+  <form id="tm-form" style="display:none">
+    <input name="name" placeholder="Dein Name" required />
+    <input name="email" type="email" placeholder="Deine E-Mail" required />
+    <input name="phone" placeholder="Telefon (optional)" />
+    <textarea name="message" placeholder="Deine Nachricht (optional)"></textarea>
+    <input name="hp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" />
+    <button type="submit" class="btn btn-dark" data-sketch-cta>Termin bestätigen</button>
+  </form>
+  <p id="tm-status"></p>
 </section>
+<script>
+(function(){
+  var API='https://outreach-backend-production-15a4.up.railway.app';var SK='5ae9145c-00fa-459e-8ec1-7d298d300dab';var chosen=null;
+  var slotsEl=document.getElementById('tm-slots');
+  var formEl=document.getElementById('tm-form');
+  var statusEl=document.getElementById('tm-status');
+  function fmt(iso){var d=new Date(iso);return d.toLocaleDateString("de-CH",{weekday:"short",day:"2-digit",month:"2-digit"})+" "+d.toLocaleTimeString("de-CH",{hour:"2-digit",minute:"2-digit"});}
+  function loadSlots(){
+    fetch(API+'/booking/slots?sketch_id='+SK).then(function(r){return r.json();}).then(function(data){
+      var slots=(data&&data.slots)||[];
+      if(!slots.length){slotsEl.textContent='Aktuell keine freien Termine — schreib mir gern direkt.';return;}
+      slotsEl.innerHTML='';
+      slots.slice(0,12).forEach(function(s){
+        var b=document.createElement('button');b.type='button';b.textContent=fmt(s.start);
+        b.onclick=function(){chosen=s.start;formEl.style.display='block';statusEl.textContent='Gewählt: '+fmt(s.start);};
+        slotsEl.appendChild(b);
+      });
+    }).catch(function(){slotsEl.textContent='Die Termine konnten nicht geladen werden.';});
+  }
+  formEl.addEventListener("submit",function(e){
+    e.preventDefault();if(!chosen)return;
+    var f=new FormData(formEl);
+    fetch(API+'/booking/appointments',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      sketch_id:SK,slot_start:chosen,format:'online',hp:f.get('hp')||'',
+      contact:{name:f.get('name'),email:f.get('email'),phone:f.get('phone')||null,message:f.get('message')||null}
+    })}).then(function(r){
+      if(r.status===409){statusEl.textContent='Dieser Termin wurde soeben vergeben — bitte einen anderen wählen.';chosen=null;loadSlots();return null;}
+      if(!r.ok){statusEl.textContent='Bitte prüfe kurz deine Angaben.';return null;}
+      return r.json();
+    }).then(function(ok){
+      if(ok){formEl.style.display='none';slotsEl.style.display='none';statusEl.textContent='Termin bestätigt — du erhältst eine E-Mail mit allen Details.';}
+    }).catch(function(){statusEl.textContent='Verbindung fehlgeschlagen — bitte nochmals versuchen.';});
+  });
+  loadSlots();
+})();
+</script>
 
 <!-- ================= FOOTER / KONTAKT ================= -->
 <footer class="foot" id="kontakt">
@@ -547,7 +608,7 @@ section{padding:88px 0}
         <a href="tel:+41774295484">077 429 54 84</a>
         <a href="mailto:einfach.sein@gmx.ch">einfach.sein@gmx.ch</a>
         <a href="https://facebook.com/profile.php?id=61585489652874" target="_blank">Facebook</a>
-        <a href="#" onclick="openBooking();return false;" style="color:var(--gold);font-weight:600;margin-top:.6em">→ Termin buchen</a>
+        <a href="#" data-sketch-cta onclick="openBooking();return false;" style="color:var(--gold);font-weight:600;margin-top:.6em">→ Termin buchen</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -724,6 +785,22 @@ function nextStep(){
   render();
 }
 function prevStep(){if(state.step>1){state.step--;render()}}
+</script>
+<script>
+(function(){
+  var S="5ae9145c-00fa-459e-8ec1-7d298d300dab",U="https://outreach-backend-production-15a4.up.railway.app/sketch-tracking/events",t0=Date.now();
+  if(navigator.webdriver)return;
+  if(/[?#&](notrack|preview)\b/i.test(location.href))return;
+  function send(type,extra){try{fetch(U,{method:'POST',keepalive:true,
+    headers:{'Content-Type':'text/plain'},
+    body:JSON.stringify(Object.assign({sketch_id:S,event_type:type},extra||{}))});}catch(e){}}
+  setTimeout(function(){if(document.visibilityState==='visible')
+    send('view',{dwell_ms:Date.now()-t0});},2000);
+  document.addEventListener('click',function(e){
+    var el=e.target&&e.target.closest&&e.target.closest('[data-sketch-cta]');
+    if(el){send('cta_click');}
+  },true);
+})();
 </script>
 </body>
 </html>
