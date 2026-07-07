@@ -928,6 +928,12 @@ function prevStep(){if(state.step>1){state.step--;render()}}
     var el=e.target&&e.target.closest&&e.target.closest('[data-sketch-cta]');
     if(el){send('cta_click');}
   },true);
+  var acc=0,vs=document.visibilityState==='visible'?t0:0;
+  function leave(){if(vs){acc+=Date.now()-vs;vs=0;if(acc>=2000)send('dwell',{dwell_ms:acc});}}
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='visible'){if(!vs)vs=Date.now();}else{leave();}
+  },true);
+  window.addEventListener('pagehide',leave,true);
 })();
 </script>
 </body>
